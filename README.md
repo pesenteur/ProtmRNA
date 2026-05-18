@@ -42,23 +42,22 @@ where `L` is the number of codon tokens in the input sequence.
 The core logic for extracting features from a codon sequence is shown below:
 
 ```python
-seq = sequence.split()
 
-x = [dict_res_to_idx['<cls>']]
-for i in seq:
-    if i in dict_res_to_idx:
-        x.append(dict_res_to_idx[i])
-    elif len(i) == 3:
-        x.append(dict_res_to_idx['XXX'])
-    else:
-        assert len(i) == 1
-        x.append(dict_res_to_idx['X'])
-x.append(dict_res_to_idx['<eos>'])
+input_sequence = "ATG GCT TTT CGA GGA"
 
-x = np.array([x])
-out, decode_out = my_model(x)
+my_model = ProtmRNA(n_layers=33,
+                    d_model=1280,
+                    n_heads=20,
+                    d_ffn=1280*4,
+                    vocab_size=78)
 
-feature = decode_out[:, 1:-1, :]
+my_model(inputs=np.zeros((1, 1024)))
+my_model.load_model(name="./models/ProtmRNA_weights.h5")
+
+feature, decode_result = extract_feature_and_decode_from_sequence(
+    my_model,
+    input_sequence
+)
 ```
 
 ## Dependency
