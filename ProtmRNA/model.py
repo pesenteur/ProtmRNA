@@ -185,7 +185,7 @@ class ProtmRNA(tf.keras.Model):
         decode_out = self.ffn_norm(decode_out)
         logit = self.lm_head(decode_out, self.decoder.embedding.weights[0])
         out = tf.argmax(logit, -1)
-        return logit, decode_out
+        return out, decode_out
         
     def load_model(self, name=None):
         print ("load_lm_weights", name)
