@@ -78,7 +78,7 @@ feature, decode_result = extract_feature_and_decode_from_sequence(
     Python 3.7
     TensorFlow 2.4
 
-The pre-trained model of ProtmRNA is hosted on Google Drive.
+The pre-trained model of ProtmRNA is hosted on [Google Drive](https://drive.google.com/file/d/1qP7Lg6axDs2eSeed-iPgDJMjmkO7wfKt/view?usp=sharing).
 
 Please place the weight file in the following path before running feature extraction:
 
