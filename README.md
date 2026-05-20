@@ -10,6 +10,8 @@ To address this, we introduce ProtmRNA, a codon-level language model that repurp
 
 Figure above shows the overall framework and performance of ProtmRNA. ProtmRNA adopts the pre-trained ESM-2 650M protein language model as the source domain for cross-modal knowledge transfer. The original amino-acid embedding space is extended to incorporate codon embeddings, enabling mRNA coding sequences to be processed at the codon level. The hidden dimension of ProtmRNA remains identical to ESM-2 at 1280.
 
+**To reduce computational overhead, we freeze the pre-trained mRNA language model during downstream evaluation and use it to extract fixed-length representations for all mRNA sequences in the benchmark datasets.**
+
 For CDS-related downstream tasks, we evaluate ProtmRNA and other codon-based models on four regression tasks: SARS-CoV-2 vaccine degradation prediction, fungal gene expression prediction, mRFP expression prediction, and mRNA stability prediction. For protein-related tasks, we include two regression tasks: protein melting point prediction and protein solubility prediction. We also adopt the transcript abundance prediction benchmark across seven species from Xiong et al. As shown in Figure 1b-e, ProtmRNA achieves performance comparable or superior to other leading mRNA language models. 
 
 We further compare ProtmRNA with its starting checkpoint, ESM-2 650M, as shown in the table below. The results show that ProtmRNA outperforms ESM-2 in most cases, even on protein-related tasks, confirming that our cross-modal knowledge transfer strategy enhances mRNA sequence understanding while preserving protein-related predictive capability.
